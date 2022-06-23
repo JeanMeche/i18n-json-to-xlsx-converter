@@ -1,9 +1,9 @@
 {
   "nestedObject": {
     "nameOfTheArea": {
+      "context": "Contexte",
       "title": "Titre",
-      "subTitle": "Soustitre",
-      "context": "Contexte"
+      "subTitle": "Soustitre"
     }
   }
 }

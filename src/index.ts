@@ -86,6 +86,7 @@ import utils from './utils';
       const JSONFiles = utils.getJSONFilePaths(filePath);
       const workbook = new Excel.Workbook();
       const worksheet = workbook.addWorksheet();
+      const rowForKey = new Map<string, number>();
 
       for (const JSONFile of JSONFiles!) {
         const colIndex = JSONFiles.indexOf(JSONFile) + 2; // starts at 1, skipping key column
@@ -94,15 +95,19 @@ import utils from './utils';
         const sourceText = sourceBuffer.toString();
         const sourceData = JSON.parse(sourceText);
 
-        let rowCount = 1;
-
         const writeToXLSX = (key: string, value: string) => {
-          const rows = worksheet.getRow(rowCount);
+          let rowIndex: number;
+          if (rowForKey.has(key)) {
+            rowIndex = rowForKey.get(key)!;
+          } else {
+            rowIndex = rowForKey.size;
+            rowForKey.set(key, rowIndex);
+          }
+
+          const rows = worksheet.getRow(rowIndex);
           rows.getCell(1).value = key;
           // Check for null, "" of the values and assign semantic character for that
           rows.getCell(colIndex).value = (value || '-').toString();
-
-          rowCount += 1;
         };
 
         writeToXLSX('Key', lang);
