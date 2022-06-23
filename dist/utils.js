@@ -70,9 +70,9 @@ const createPathByCheckingSpaceCharacter = (path) => {
 const checkForMultipleJSONFileErrors = (filePath, process) => {
     const multipleJSON = filePath.split(',');
     if (multipleJSON.length > 1) {
-        const isMultiplePathCorrect = multipleJSON.every(jsonFilePathName => jsonFilePathName.includes('.json'));
+        const isMultiplePathCorrect = multipleJSON.every((jsonFilePathName) => jsonFilePathName.includes('.json'));
         if (!isMultiplePathCorrect) {
-            const isOneJSONPath = multipleJSON.some(jsonFilePathName => jsonFilePathName.includes('.json'));
+            const isOneJSONPath = multipleJSON.some((jsonFilePathName) => jsonFilePathName.includes('.json'));
             if (isOneJSONPath) {
                 error(red('One of the multiple path entries of the JSON file path is wrong.'));
                 process.exit(1);
@@ -86,12 +86,10 @@ const checkForMultipleJSONFileErrors = (filePath, process) => {
 };
 const isMultipleJSONFilePathsValid = (filePath) => {
     const multipleJSON = filePath.split(',');
-    return multipleJSON.length > 1 && multipleJSON.every(jsonFilePathName => jsonFilePathName.includes('.json'));
+    return multipleJSON.length > 1 && multipleJSON.every((jsonFilePathName) => jsonFilePathName.includes('.json'));
 };
 const getJSONFilePaths = (filePath) => {
-    return filePath
-        .split(',')
-        .map(JSONFilePath => JSONFilePath.trim());
+    return filePath.split(',').map((JSONFilePath) => JSONFilePath.trim());
 };
 exports.default = {
     log,
