@@ -100,7 +100,7 @@ import utils from './utils';
           if (rowForKey.has(key)) {
             rowIndex = rowForKey.get(key)!;
           } else {
-            rowIndex = rowForKey.size;
+            rowIndex = rowForKey.size + 1;
             rowForKey.set(key, rowIndex);
           }
 

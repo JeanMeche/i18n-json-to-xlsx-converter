@@ -85,7 +85,7 @@ const utils_1 = require("./utils");
                         rowIndex = rowForKey.get(key);
                     }
                     else {
-                        rowIndex = rowForKey.size;
+                        rowIndex = rowForKey.size + 1;
                         rowForKey.set(key, rowIndex);
                     }
                     const rows = worksheet.getRow(rowIndex);
