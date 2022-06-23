@@ -82,7 +82,6 @@ const utils_1 = require("./utils");
                 const writeToXLSX = (key, value) => {
                     const rows = worksheet.getRow(rowCount);
                     rows.getCell(1).value = key;
-                    console.log(colIndex, value);
                     // Check for null, "" of the values and assign semantic character for that
                     rows.getCell(colIndex).value = (value || '-').toString();
                     rowCount += 1;

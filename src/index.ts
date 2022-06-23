@@ -99,7 +99,6 @@ import utils from './utils';
         const writeToXLSX = (key: string, value: string) => {
           const rows = worksheet.getRow(rowCount);
           rows.getCell(1).value = key;
-          console.log(colIndex, value);
           // Check for null, "" of the values and assign semantic character for that
           rows.getCell(colIndex).value = (value || '-').toString();
 
